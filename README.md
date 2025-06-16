@@ -29,49 +29,60 @@ El proyecto forma parte del portafolio profesional de **Renzo Hidalgo**, y está
 
 ## 📂 Estructura del proyecto
 
+```
 opensky/
 ├── notebooks/
-│   ├── 00_ingestion/                 # Ingesta desde Unity Catalog Volumes
-│   ├── 02_silver/                    # Limpieza y transformación (Bronze → Silver)
-│   ├── 03_gold/                      # Agregaciones y modelado analítico (Silver → Gold)
-│   ├── 04_eda/                       # Análisis exploratorio (EDA)
-│   └── 05_dashboards/               # Visualizaciones interactivas con display()
-├── src/                              # Módulos Python: API client, transformación, utilidades
-├── configs/                          # Configuración de rutas
-├── tests/                            # Pruebas unitarias
-├── data/                             # Archivos de datos locales (ej. JSON)
-├── dags/ (opcional)                 # DAGs de Airflow para automatización (si aplica)
-└── README.md                         # Este archivo
+│   ├── 00_ingestion/           # Ingesta desde Unity Catalog Volumes
+│   ├── 02_silver/              # Limpieza y transformación (Bronze → Silver)
+│   ├── 03_gold/                # Agregaciones y modelado analítico (Silver → Gold)
+│   ├── 04_eda/                 # Análisis exploratorio (EDA)
+│   └── 05_dashboards/          # Visualizaciones interactivas con display()
+├── src/                        # Módulos Python: API client, transformación, utilidades
+├── configs/                    # Configuración de rutas
+├── tests/                      # Pruebas unitarias
+├── data/                       # Archivos de datos locales (ej. JSON)
+├── dags/ (opcional)            # DAGs de Airflow para automatización (si aplica)
+└── README.md                   # Este archivo
+```
+
+---
 
 ## 🚀 ¿Cómo ejecutar el proyecto?
 
-Clona el repositorio:
+1. **Clonar el repositorio:**
 
-bash
-Copiar
-Editar
-git clone https://github.com/tu_usuario/opensky.git
-Carga los datos localmente:
+   ```bash
+   git clone https://github.com/tu_usuario/opensky.git
+   ```
 
-Ejecuta data_ingest_local/fetch_and_save_opensky.py para obtener datos desde la API
+2. **Obtener los datos desde la API de OpenSky:**
+   Ejecuta el script:
 
-Sube el archivo JSON a un Volume de Unity Catalog en Databricks
+   ```bash
+   python data_ingest_local/fetch_and_save_opensky.py
+   ```
 
-Ejecuta el flujo de procesamiento en Databricks:
+3. **Subir el archivo JSON a Unity Catalog:**
 
-00_ingestion/ingest_from_volume_to_bronze.ipynb
+   * Ve a `Data > Volumes` en Databricks
+   * Crea o selecciona un volume y sube el archivo `.json`
 
-02_silver/bronze_to_silver_cleaning.ipynb
+4. **Ejecutar notebooks en Databricks:**
 
-03_gold/create_gold_tables.ipynb
+   * `00_ingestion/ingest_from_volume_to_bronze.ipynb`
+   * `02_silver/bronze_to_silver_cleaning.ipynb`
+   * `03_gold/create_gold_tables.ipynb`
 
-Analiza y visualiza:
+5. **Explorar los datos y visualizaciones:**
 
-Usa 04_eda/exploracion_opensky.ipynb para análisis exploratorio
+   * `04_eda/exploracion_opensky.ipynb`: análisis exploratorio
+   * `05_dashboards/opensky_viz.ipynb`: visualizaciones listas para dashboards
 
-Consulta visualizaciones en 05_dashboards/opensky_viz.ipynb
+---
 
 ## 👤 Autor
-## Renzo Hidalgo
+
+**Renzo Hidalgo**
 Portafolio de Ingeniería de Datos
-📫 renzo_hc@outlook.com
+📧 [renzo\_hc@outlook.com](mailto:renzo_hc@outlook.com)
+🔗 [LinkedIn](https://www.linkedin.com/in/rhidalgoca/)
