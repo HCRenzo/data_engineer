@@ -1,0 +1,41 @@
+resources:
+  jobs:
+    OpenSky_ETL_Job:
+      name: OpenSky_ETL_Job
+      trigger:
+        pause_status: UNPAUSED
+        periodic:
+          interval: 1
+          unit: DAYS
+      tasks:
+        - task_key: ingest_from_volume_to_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/renzo_hc@outlook.com/opensky/notebooks/00_ingestion/ingest_from_file_to_bronze
+            source: WORKSPACE
+        - task_key: bronze_to_silver_cleaning
+          depends_on:
+            - task_key: ingest_from_volume_to_bronze
+          notebook_task:
+            notebook_path: /Workspace/Users/renzo_hc@outlook.com/opensky/notebooks/02_silver/bronze_to_silver_cleaning
+            source: WORKSPACE
+        - task_key: create_gold_tables
+          depends_on:
+            - task_key: bronze_to_silver_cleaning
+          notebook_task:
+            notebook_path: /Workspace/Users/renzo_hc@outlook.com/opensky/notebooks/03_gold/create_gold_tables
+            source: WORKSPACE
+        - task_key: exploracion_opensky
+          depends_on:
+            - task_key: create_gold_tables
+          notebook_task:
+            notebook_path: /Workspace/Users/renzo_hc@outlook.com/opensky/notebooks/04_eda/exploracion_opensky
+            source: WORKSPACE
+        - task_key: opensky_viz
+          depends_on:
+            - task_key: exploracion_opensky
+          notebook_task:
+            notebook_path: /Workspace/Users/renzo_hc@outlook.com/opensky/notebooks/05_dashboards/opensky_viz
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: STANDARD
