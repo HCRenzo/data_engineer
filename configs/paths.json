@@ -1,0 +1,5 @@
+{
+  "bronze_path": "/mnt/datalake/bronze/opensky/",
+  "silver_path": "/mnt/datalake/silver/opensky/",
+  "gold_path": "/mnt/datalake/gold/opensky/"
+}
