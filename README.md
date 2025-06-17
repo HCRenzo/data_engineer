@@ -52,7 +52,7 @@ opensky/
 1. **Clonar el repositorio:**
 
    ```bash
-   git clone https://github.com/tu_usuario/opensky.git
+   git clone https://github.com/HCRenzo/opensky.git
    ```
 
 2. **Obtener los datos desde la API de OpenSky:**
