@@ -1,0 +1,259 @@
+{
+  "datasets": [
+    {
+      "name": "701a99b5",
+      "displayName": "users_events_silver",
+      "queryLines": [
+        "SELECT \r\n",
+        "*\r\n",
+        "FROM users_events.silver.users_events_silver;"
+      ],
+      "catalog": "users_events",
+      "schema": "silver"
+    }
+  ],
+  "pages": [
+    {
+      "name": "a1f20f9b",
+      "displayName": "For users",
+      "layout": [
+        {
+          "widget": {
+            "name": "2d0da6da",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "701a99b5",
+                  "fields": [
+                    {
+                      "name": "event_type",
+                      "expression": "`event_type`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "event_type",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "event_type"
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "hideLabels": false,
+                    "hideTitle": true
+                  },
+                  "displayName": "Count of Records"
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "title": "Events by type"
+              },
+              "annotations": [
+                {
+                  "type": "horizontal-line",
+                  "encodings": {
+                    "y": {
+                      "dataValue": "1.5",
+                      "dataType": "INTEGER"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "10025335",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "701a99b5",
+                  "fields": [
+                    {
+                      "name": "device",
+                      "expression": "`device`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "device",
+                  "scale": {
+                    "type": "categorical"
+                  },
+                  "displayName": "device"
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "axis": {
+                    "hideLabels": false,
+                    "hideTitle": true
+                  },
+                  "displayName": "Count of Records"
+                }
+              },
+              "frame": {
+                "showTitle": true,
+                "showDescription": false,
+                "title": "Events by device"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS"
+    },
+    {
+      "name": "22ce2095",
+      "displayName": "Global Filters",
+      "layout": [
+        {
+          "widget": {
+            "name": "18a50907",
+            "queries": [
+              {
+                "name": "dashboards/01f0585bd5c21a558c803c0211ed34d1/datasets/01f0585bdd44143899ce74a33560a175_device",
+                "query": {
+                  "datasetName": "701a99b5",
+                  "fields": [
+                    {
+                      "name": "device",
+                      "expression": "`device`"
+                    },
+                    {
+                      "name": "device_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "device",
+                    "displayName": "device",
+                    "queryName": "dashboards/01f0585bd5c21a558c803c0211ed34d1/datasets/01f0585bdd44143899ce74a33560a175_device"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 1,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "f78bf8d6",
+            "queries": [
+              {
+                "name": "dashboards/01f0585bd5c21a558c803c0211ed34d1/datasets/01f0585bdd44143899ce74a33560a175_event_type",
+                "query": {
+                  "datasetName": "701a99b5",
+                  "fields": [
+                    {
+                      "name": "event_type",
+                      "expression": "`event_type`"
+                    },
+                    {
+                      "name": "event_type_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "filter-single-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "event_type",
+                    "displayName": "event_type",
+                    "queryName": "dashboards/01f0585bd5c21a558c803c0211ed34d1/datasets/01f0585bdd44143899ce74a33560a175_event_type"
+                  }
+                ]
+              },
+              "frame": {
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 1,
+            "height": 2
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_GLOBAL_FILTERS"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    }
+  }
+}
